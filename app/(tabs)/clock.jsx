@@ -1,4 +1,4 @@
-import { View, Dimensions } from "react-native";
+import { View,Text, Dimensions } from "react-native";
 import React, { useState, useEffect } from "react";
 import Svg, { Circle, Line, Text as SvgText } from "react-native-svg";
 
@@ -17,7 +17,7 @@ const ClockPage = () => {
     return () => clearInterval(timer);
   }, []);
 
-  
+  const newTime = time.toLocaleTimeString(); 
   const getHandCoordinates = (length, angle) => {
     const radian = (Math.PI / 180) * (angle - 90);
     const x = center + length * Math.cos(radian);
@@ -39,7 +39,7 @@ const ClockPage = () => {
 
   return (
     <View className="h-full flex-1 bg-[#1b263b] p-2 ">
-      <View className='h-[50%] items-center mt-[1rem]'>
+      <View className="h-[50%] items-center mt-[1rem]">
         <Svg width={clockSize} height={clockSize}>
           <Circle
             cx={center}
@@ -50,7 +50,7 @@ const ClockPage = () => {
             strokeWidth={4}
           />
           {[...Array(12)].map((_, i) => {
-            const angle = (360 / 12) * (i + 1); 
+            const angle = (360 / 12) * (i + 1);
             const numberPos = getHandCoordinates(center * 0.85, angle);
             return (
               <SvgText
@@ -67,8 +67,6 @@ const ClockPage = () => {
               </SvgText>
             );
           })}
-
-          {/* Hour Hand */}
           <Line
             x1={center}
             y1={center}
@@ -96,6 +94,16 @@ const ClockPage = () => {
 
           <Circle cx={center} cy={center} r={5} fill="black" />
         </Svg>
+      </View>
+      <View className="h-[50%] flex-1 justify-center items-center">
+        <View
+          className="h-[10rem] m-4 w-[20rem] items-center 
+        justify-center rounded-md border-[0.2rem] border-[rgb(213,242,84)] bg-white p-4 shadow-lg"
+        >
+          <Text className="text-[3.1rem] tracking-[2px] font-bold text-gray-900  font-serif">
+            {newTime}
+          </Text>
+        </View>
       </View>
     </View>
   );
