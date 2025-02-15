@@ -44,7 +44,7 @@ const StopwatchPage = () => {
     <View className="flex-1 bg-[#1b263b]  items-center justify-start pt-[5rem] ">
       <View
         className="h-[20rem] w-[20rem] relative bg-white items-center justify-center 
-        rounded-full"
+        rounded-full border-[3px] border-[#ccff33]"
       >
         <View className="absolute top-[3.2rem] ">
           <Text className="text-[5rem] text-center font-serif  text-gray-900">
